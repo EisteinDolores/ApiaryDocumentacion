@@ -1,80 +1,65 @@
 FORMAT: 1A
 HOST: http://polls.apiblueprint.org/
 
-# Polls API
+# Licencia
 
 Polls is a simple API allowing consumers to view polls and vote in them.
 
-## Questions Collection [/questions]
+## Puntos [/api/licencia/puntos/consultar]
 
-### List All Questions [GET]
+### Consultar [POST]
+
++ Attributes
+    + tipo_documento (required, string) - Tipo de documento.
+    + numero_documento (required, string) - Número de DNI del postulante.
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "tipo_documento": "2",
+                "numero_documento": "41424344"
+            }
 
 + Response 200 (application/json)
 
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
+                "apellidos_nombres": "Diaz Reyex Secmar",
+                "numero_licencia": "Q45215215",
+                "clase_categoria": "02/02/2018",
+                "estado_licencia": "Vigente",
+                "faltas_muygraves":"1",
+                "faltas_graves":"3".
+                "puntos_firmes":"20"
             }
         ]
 
-### Create a New Question [POST]
+## Record [/api/licencia/Record/consultar]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+### Consultar [POST]
 
++ Attributes
+    + tipo_documento (required, string) - Tipo de documento.
+    + numero_documento (required, string) - Número de DNI del postulante.
+    + correo (optional, string) - correo.
+    
+    
 + Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                "tipo_documento": "2",
+                "numero_documento": "41424344",
+                "correo":"prueba@mtc.gob.pe"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "documento": "base64:zxcsaczxczxcsacsdcdsfsdfsdxczczxcsdczxczxczxc",
             }
